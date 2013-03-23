@@ -22,6 +22,7 @@ Partial Class UpdateUser
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.buttonReset = New System.Windows.Forms.Button()
         Me.buttonAdd = New System.Windows.Forms.Button()
@@ -40,6 +41,11 @@ Partial Class UpdateUser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
+        Me.AccountpositionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Account_positionTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.account_positionTableAdapter()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AccountpositionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label9
@@ -71,12 +77,14 @@ Partial Class UpdateUser
         '
         'cmbPosition
         '
+        Me.cmbPosition.DataSource = Me.AccountpositionBindingSource
+        Me.cmbPosition.DisplayMember = "Position_Name"
         Me.cmbPosition.FormattingEnabled = True
         Me.cmbPosition.Location = New System.Drawing.Point(111, 233)
         Me.cmbPosition.Name = "cmbPosition"
         Me.cmbPosition.Size = New System.Drawing.Size(144, 21)
         Me.cmbPosition.TabIndex = 31
-        Me.cmbPosition.ValueMember = "Position_Name"
+        Me.cmbPosition.ValueMember = "Position_ID"
         '
         'Label8
         '
@@ -190,12 +198,27 @@ Partial Class UpdateUser
         '
         'ComboBox1
         '
+        Me.ComboBox1.DisplayMember = "ID"
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(111, 48)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(144, 21)
         Me.ComboBox1.TabIndex = 35
         Me.ComboBox1.ValueMember = "ID"
+        '
+        'PenjualanDataSet
+        '
+        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
+        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'AccountpositionBindingSource
+        '
+        Me.AccountpositionBindingSource.DataMember = "account_position"
+        Me.AccountpositionBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'Account_positionTableAdapter
+        '
+        Me.Account_positionTableAdapter.ClearBeforeFill = True
         '
         'UpdateUser
         '
@@ -223,6 +246,8 @@ Partial Class UpdateUser
         Me.Name = "UpdateUser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Update User"
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AccountpositionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -245,4 +270,7 @@ Partial Class UpdateUser
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents PenjualanDataSet As Program_Penjualan.penjualanDataSet
+    Friend WithEvents AccountpositionBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Account_positionTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.account_positionTableAdapter
 End Class

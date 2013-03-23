@@ -22,9 +22,9 @@ Partial Class AddItem
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtBarcode = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtItemName = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -40,6 +40,12 @@ Partial Class AddItem
         Me.buttonAdd = New System.Windows.Forms.Button()
         Me.buttonNew = New System.Windows.Forms.Button()
         Me.buttonReset = New System.Windows.Forms.Button()
+        Me.cmbBarcode = New System.Windows.Forms.ComboBox()
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
+        Me.ItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ItemTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.itemTableAdapter()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -60,13 +66,6 @@ Partial Class AddItem
         Me.Label2.Size = New System.Drawing.Size(87, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Barcode Number"
-        '
-        'txtBarcode
-        '
-        Me.txtBarcode.Location = New System.Drawing.Point(119, 44)
-        Me.txtBarcode.Name = "txtBarcode"
-        Me.txtBarcode.Size = New System.Drawing.Size(153, 20)
-        Me.txtBarcode.TabIndex = 2
         '
         'Label3
         '
@@ -192,11 +191,37 @@ Partial Class AddItem
         Me.buttonReset.Text = "Reset"
         Me.buttonReset.UseVisualStyleBackColor = True
         '
+        'cmbBarcode
+        '
+        Me.cmbBarcode.DataSource = Me.ItemBindingSource
+        Me.cmbBarcode.DisplayMember = "Barcode"
+        Me.cmbBarcode.FormattingEnabled = True
+        Me.cmbBarcode.Location = New System.Drawing.Point(119, 44)
+        Me.cmbBarcode.Name = "cmbBarcode"
+        Me.cmbBarcode.Size = New System.Drawing.Size(153, 21)
+        Me.cmbBarcode.TabIndex = 18
+        Me.cmbBarcode.ValueMember = "Barcode"
+        '
+        'PenjualanDataSet
+        '
+        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
+        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ItemBindingSource
+        '
+        Me.ItemBindingSource.DataMember = "item"
+        Me.ItemBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'ItemTableAdapter
+        '
+        Me.ItemTableAdapter.ClearBeforeFill = True
+        '
         'AddItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 336)
+        Me.Controls.Add(Me.cmbBarcode)
         Me.Controls.Add(Me.buttonReset)
         Me.Controls.Add(Me.buttonNew)
         Me.Controls.Add(Me.buttonAdd)
@@ -212,19 +237,19 @@ Partial Class AddItem
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtItemName)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.txtBarcode)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "AddItem"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Add Item"
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents txtBarcode As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtItemName As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -240,4 +265,8 @@ Partial Class AddItem
     Friend WithEvents buttonAdd As System.Windows.Forms.Button
     Friend WithEvents buttonNew As System.Windows.Forms.Button
     Friend WithEvents buttonReset As System.Windows.Forms.Button
+    Friend WithEvents cmbBarcode As System.Windows.Forms.ComboBox
+    Friend WithEvents PenjualanDataSet As Program_Penjualan.penjualanDataSet
+    Friend WithEvents ItemBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ItemTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.itemTableAdapter
 End Class

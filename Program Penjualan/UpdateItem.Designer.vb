@@ -22,6 +22,7 @@ Partial Class Update_Item
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.buttonUpdate = New System.Windows.Forms.Button()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -38,6 +39,11 @@ Partial Class Update_Item
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
+        Me.ItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ItemTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.itemTableAdapter()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'buttonUpdate
@@ -167,12 +173,28 @@ Partial Class Update_Item
         '
         'ComboBox1
         '
+        Me.ComboBox1.DataSource = Me.ItemBindingSource
+        Me.ComboBox1.DisplayMember = "Barcode"
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(119, 42)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(153, 21)
         Me.ComboBox1.TabIndex = 34
         Me.ComboBox1.ValueMember = "Barcode"
+        '
+        'PenjualanDataSet
+        '
+        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
+        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ItemBindingSource
+        '
+        Me.ItemBindingSource.DataMember = "item"
+        Me.ItemBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'ItemTableAdapter
+        '
+        Me.ItemTableAdapter.ClearBeforeFill = True
         '
         'Update_Item
         '
@@ -198,6 +220,8 @@ Partial Class Update_Item
         Me.Name = "Update_Item"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Update_Item"
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -218,4 +242,7 @@ Partial Class Update_Item
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents PenjualanDataSet As Program_Penjualan.penjualanDataSet
+    Friend WithEvents ItemBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ItemTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.itemTableAdapter
 End Class

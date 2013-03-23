@@ -22,6 +22,7 @@ Partial Class DeleteUser
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.buttonDelete = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -39,6 +40,11 @@ Partial Class DeleteUser
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtPosition = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
+        Me.AccountBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AccountTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.accountTableAdapter()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AccountBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label9
@@ -185,12 +191,28 @@ Partial Class DeleteUser
         '
         'ComboBox1
         '
+        Me.ComboBox1.DataSource = Me.AccountBindingSource
+        Me.ComboBox1.DisplayMember = "ID"
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(109, 38)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(144, 21)
         Me.ComboBox1.TabIndex = 52
         Me.ComboBox1.ValueMember = "ID"
+        '
+        'PenjualanDataSet
+        '
+        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
+        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'AccountBindingSource
+        '
+        Me.AccountBindingSource.DataMember = "account"
+        Me.AccountBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'AccountTableAdapter
+        '
+        Me.AccountTableAdapter.ClearBeforeFill = True
         '
         'DeleteUser
         '
@@ -217,6 +239,8 @@ Partial Class DeleteUser
         Me.Name = "DeleteUser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AccountBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -238,4 +262,7 @@ Partial Class DeleteUser
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtPosition As System.Windows.Forms.TextBox
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents PenjualanDataSet As Program_Penjualan.penjualanDataSet
+    Friend WithEvents AccountBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents AccountTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.accountTableAdapter
 End Class

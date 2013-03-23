@@ -122,6 +122,11 @@
     <Compile Include="OrderItem.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="penjualanDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>penjualanDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UpdateItem.Designer.vb">
       <DependentUpon>UpdateItem.vb</DependentUpon>
     </Compile>
@@ -219,6 +224,17 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="penjualanDataSet.xsc">
+      <DependentUpon>penjualanDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="penjualanDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>penjualanDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="penjualanDataSet.xss">
+      <DependentUpon>penjualanDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

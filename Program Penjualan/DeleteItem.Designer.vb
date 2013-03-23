@@ -22,6 +22,7 @@ Partial Class DeleteItem
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.buttonRemove = New System.Windows.Forms.Button()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -38,6 +39,11 @@ Partial Class DeleteItem
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbBarcode = New System.Windows.Forms.ComboBox()
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
+        Me.ItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ItemTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.itemTableAdapter()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'buttonRemove
@@ -173,12 +179,28 @@ Partial Class DeleteItem
         '
         'cmbBarcode
         '
+        Me.cmbBarcode.DataSource = Me.ItemBindingSource
+        Me.cmbBarcode.DisplayMember = "Barcode"
         Me.cmbBarcode.FormattingEnabled = True
         Me.cmbBarcode.Location = New System.Drawing.Point(119, 40)
         Me.cmbBarcode.Name = "cmbBarcode"
         Me.cmbBarcode.Size = New System.Drawing.Size(153, 21)
         Me.cmbBarcode.TabIndex = 34
         Me.cmbBarcode.ValueMember = "Barcode"
+        '
+        'PenjualanDataSet
+        '
+        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
+        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ItemBindingSource
+        '
+        Me.ItemBindingSource.DataMember = "item"
+        Me.ItemBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'ItemTableAdapter
+        '
+        Me.ItemTableAdapter.ClearBeforeFill = True
         '
         'DeleteItem
         '
@@ -204,6 +226,8 @@ Partial Class DeleteItem
         Me.Name = "DeleteItem"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Delete Item"
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -224,4 +248,7 @@ Partial Class DeleteItem
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cmbBarcode As System.Windows.Forms.ComboBox
+    Friend WithEvents PenjualanDataSet As Program_Penjualan.penjualanDataSet
+    Friend WithEvents ItemBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ItemTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.itemTableAdapter
 End Class

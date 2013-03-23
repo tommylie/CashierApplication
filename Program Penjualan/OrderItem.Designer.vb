@@ -22,6 +22,7 @@ Partial Class OrderItem
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -37,7 +38,12 @@ Partial Class OrderItem
         Me.no = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.barcodeItm = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nama = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
+        Me.DistributorlistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Distributor_listTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.distributor_listTableAdapter()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DistributorlistBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -125,12 +131,14 @@ Partial Class OrderItem
         '
         'cmbDistributor
         '
+        Me.cmbDistributor.DataSource = Me.DistributorlistBindingSource
+        Me.cmbDistributor.DisplayMember = "Distributor_Name"
         Me.cmbDistributor.FormattingEnabled = True
         Me.cmbDistributor.Location = New System.Drawing.Point(126, 95)
         Me.cmbDistributor.Name = "cmbDistributor"
         Me.cmbDistributor.Size = New System.Drawing.Size(200, 21)
         Me.cmbDistributor.TabIndex = 11
-        Me.cmbDistributor.ValueMember = "Nama Perusahaan"
+        Me.cmbDistributor.ValueMember = "ID"
         '
         'DataGridView1
         '
@@ -156,6 +164,20 @@ Partial Class OrderItem
         Me.nama.HeaderText = "Product Name"
         Me.nama.Name = "nama"
         '
+        'PenjualanDataSet
+        '
+        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
+        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DistributorlistBindingSource
+        '
+        Me.DistributorlistBindingSource.DataMember = "distributor_list"
+        Me.DistributorlistBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'Distributor_listTableAdapter
+        '
+        Me.Distributor_listTableAdapter.ClearBeforeFill = True
+        '
         'OrderItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -177,6 +199,8 @@ Partial Class OrderItem
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Order Item"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DistributorlistBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -196,4 +220,7 @@ Partial Class OrderItem
     Friend WithEvents no As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents barcodeItm As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents nama As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PenjualanDataSet As Program_Penjualan.penjualanDataSet
+    Friend WithEvents DistributorlistBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Distributor_listTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.distributor_listTableAdapter
 End Class

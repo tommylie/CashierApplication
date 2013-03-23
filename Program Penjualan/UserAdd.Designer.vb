@@ -22,6 +22,7 @@ Partial Class UserAdd
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -40,6 +41,11 @@ Partial Class UserAdd
         Me.buttonReset = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtId = New System.Windows.Forms.TextBox()
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
+        Me.AccountpositionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Account_positionTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.account_positionTableAdapter()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AccountpositionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -154,11 +160,14 @@ Partial Class UserAdd
         '
         'cmbPosition
         '
+        Me.cmbPosition.DataSource = Me.AccountpositionBindingSource
+        Me.cmbPosition.DisplayMember = "Position_Name"
         Me.cmbPosition.FormattingEnabled = True
         Me.cmbPosition.Location = New System.Drawing.Point(109, 230)
         Me.cmbPosition.Name = "cmbPosition"
         Me.cmbPosition.Size = New System.Drawing.Size(144, 21)
         Me.cmbPosition.TabIndex = 13
+        Me.cmbPosition.ValueMember = "Position_ID"
         '
         'buttonAdd
         '
@@ -195,6 +204,20 @@ Partial Class UserAdd
         Me.txtId.Size = New System.Drawing.Size(144, 20)
         Me.txtId.TabIndex = 17
         '
+        'PenjualanDataSet
+        '
+        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
+        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'AccountpositionBindingSource
+        '
+        Me.AccountpositionBindingSource.DataMember = "account_position"
+        Me.AccountpositionBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'Account_positionTableAdapter
+        '
+        Me.Account_positionTableAdapter.ClearBeforeFill = True
+        '
         'UserAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -221,6 +244,8 @@ Partial Class UserAdd
         Me.Name = "UserAdd"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "User Add"
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AccountpositionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -243,4 +268,7 @@ Partial Class UserAdd
     Friend WithEvents buttonReset As System.Windows.Forms.Button
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents txtId As System.Windows.Forms.TextBox
+    Friend WithEvents PenjualanDataSet As Program_Penjualan.penjualanDataSet
+    Friend WithEvents AccountpositionBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Account_positionTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.account_positionTableAdapter
 End Class
