@@ -128,19 +128,19 @@ Partial Class MainForm
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.AddItemToolStripMenuItem.Text = "&Add Item"
         '
         'DeleteItemToolStripMenuItem
         '
         Me.DeleteItemToolStripMenuItem.Name = "DeleteItemToolStripMenuItem"
-        Me.DeleteItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DeleteItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.DeleteItemToolStripMenuItem.Text = "&Delete Item"
         '
         'UpdateItemToolStripMenuItem
         '
         Me.UpdateItemToolStripMenuItem.Name = "UpdateItemToolStripMenuItem"
-        Me.UpdateItemToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UpdateItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.UpdateItemToolStripMenuItem.Text = "&Update Item"
         '
         'KasirToolStripMenuItem
@@ -185,6 +185,7 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(484, 262)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
