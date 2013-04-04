@@ -34,16 +34,20 @@ Partial Class OrderItem
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.cmbDistributor = New System.Windows.Forms.ComboBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.no = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.barcodeItm = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nama = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
         Me.DistributorlistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
         Me.Distributor_listTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.distributor_listTableAdapter()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.BarcodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CategoryDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SellingpriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ItemTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.itemTableAdapter()
         CType(Me.DistributorlistBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -140,49 +144,69 @@ Partial Class OrderItem
         Me.cmbDistributor.TabIndex = 11
         Me.cmbDistributor.ValueMember = "ID"
         '
-        'DataGridView1
+        'DistributorlistBindingSource
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.no, Me.barcodeItm, Me.nama})
-        Me.DataGridView1.Location = New System.Drawing.Point(17, 144)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(691, 150)
-        Me.DataGridView1.TabIndex = 12
-        '
-        'no
-        '
-        Me.no.HeaderText = "No"
-        Me.no.Name = "no"
-        '
-        'barcodeItm
-        '
-        Me.barcodeItm.HeaderText = "Barcode"
-        Me.barcodeItm.Name = "barcodeItm"
-        '
-        'nama
-        '
-        Me.nama.HeaderText = "Product Name"
-        Me.nama.Name = "nama"
+        Me.DistributorlistBindingSource.DataMember = "distributor_list"
+        Me.DistributorlistBindingSource.DataSource = Me.PenjualanDataSet
         '
         'PenjualanDataSet
         '
         Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
         Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'DistributorlistBindingSource
-        '
-        Me.DistributorlistBindingSource.DataMember = "distributor_list"
-        Me.DistributorlistBindingSource.DataSource = Me.PenjualanDataSet
-        '
         'Distributor_listTableAdapter
         '
         Me.Distributor_listTableAdapter.ClearBeforeFill = True
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AutoGenerateColumns = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BarcodeDataGridViewTextBoxColumn, Me.ItemNameDataGridViewTextBoxColumn, Me.CategoryDataGridViewTextBoxColumn, Me.SellingpriceDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.ItemBindingSource
+        Me.DataGridView1.Location = New System.Drawing.Point(11, 141)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(697, 150)
+        Me.DataGridView1.TabIndex = 12
+        '
+        'BarcodeDataGridViewTextBoxColumn
+        '
+        Me.BarcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode"
+        Me.BarcodeDataGridViewTextBoxColumn.HeaderText = "Barcode"
+        Me.BarcodeDataGridViewTextBoxColumn.Name = "BarcodeDataGridViewTextBoxColumn"
+        '
+        'ItemNameDataGridViewTextBoxColumn
+        '
+        Me.ItemNameDataGridViewTextBoxColumn.DataPropertyName = "Item_Name"
+        Me.ItemNameDataGridViewTextBoxColumn.HeaderText = "Item_Name"
+        Me.ItemNameDataGridViewTextBoxColumn.Name = "ItemNameDataGridViewTextBoxColumn"
+        '
+        'CategoryDataGridViewTextBoxColumn
+        '
+        Me.CategoryDataGridViewTextBoxColumn.DataPropertyName = "Category"
+        Me.CategoryDataGridViewTextBoxColumn.HeaderText = "Category"
+        Me.CategoryDataGridViewTextBoxColumn.Name = "CategoryDataGridViewTextBoxColumn"
+        '
+        'SellingpriceDataGridViewTextBoxColumn
+        '
+        Me.SellingpriceDataGridViewTextBoxColumn.DataPropertyName = "Selling_price"
+        Me.SellingpriceDataGridViewTextBoxColumn.HeaderText = "Selling_price"
+        Me.SellingpriceDataGridViewTextBoxColumn.Name = "SellingpriceDataGridViewTextBoxColumn"
+        '
+        'ItemBindingSource
+        '
+        Me.ItemBindingSource.DataMember = "item"
+        Me.ItemBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'ItemTableAdapter
+        '
+        Me.ItemTableAdapter.ClearBeforeFill = True
         '
         'OrderItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(726, 384)
+        Me.ClientSize = New System.Drawing.Size(728, 384)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.cmbDistributor)
         Me.Controls.Add(Me.TextBox2)
@@ -198,9 +222,10 @@ Partial Class OrderItem
         Me.Name = "OrderItem"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Order Item"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DistributorlistBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -216,11 +241,14 @@ Partial Class OrderItem
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents cmbDistributor As System.Windows.Forms.ComboBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents no As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents barcodeItm As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents nama As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PenjualanDataSet As Program_Penjualan.penjualanDataSet
     Friend WithEvents DistributorlistBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Distributor_listTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.distributor_listTableAdapter
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents ItemBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ItemTableAdapter As Program_Penjualan.penjualanDataSetTableAdapters.itemTableAdapter
+    Friend WithEvents BarcodeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ItemNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CategoryDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SellingpriceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
