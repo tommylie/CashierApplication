@@ -37,15 +37,15 @@ Partial Class UserAdd
         Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cmbPosition = New System.Windows.Forms.ComboBox()
+        Me.AccountpositionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
         Me.buttonAdd = New System.Windows.Forms.Button()
         Me.buttonReset = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtId = New System.Windows.Forms.TextBox()
-        Me.PenjualanDataSet = New Program_Penjualan.penjualanDataSet()
-        Me.AccountpositionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Account_positionTableAdapter = New Program_Penjualan.penjualanDataSetTableAdapters.account_positionTableAdapter()
-        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AccountpositionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -169,6 +169,16 @@ Partial Class UserAdd
         Me.cmbPosition.TabIndex = 13
         Me.cmbPosition.ValueMember = "Position_ID"
         '
+        'AccountpositionBindingSource
+        '
+        Me.AccountpositionBindingSource.DataMember = "account_position"
+        Me.AccountpositionBindingSource.DataSource = Me.PenjualanDataSet
+        '
+        'PenjualanDataSet
+        '
+        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
+        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'buttonAdd
         '
         Me.buttonAdd.Location = New System.Drawing.Point(55, 266)
@@ -204,16 +214,6 @@ Partial Class UserAdd
         Me.txtId.Size = New System.Drawing.Size(144, 20)
         Me.txtId.TabIndex = 17
         '
-        'PenjualanDataSet
-        '
-        Me.PenjualanDataSet.DataSetName = "penjualanDataSet"
-        Me.PenjualanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AccountpositionBindingSource
-        '
-        Me.AccountpositionBindingSource.DataMember = "account_position"
-        Me.AccountpositionBindingSource.DataSource = Me.PenjualanDataSet
-        '
         'Account_positionTableAdapter
         '
         Me.Account_positionTableAdapter.ClearBeforeFill = True
@@ -244,8 +244,8 @@ Partial Class UserAdd
         Me.Name = "UserAdd"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "User Add"
-        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AccountpositionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PenjualanDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
